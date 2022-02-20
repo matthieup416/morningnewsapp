@@ -21,9 +21,7 @@ function Nav(props) {
   // Au chargement du composant, on obtient toutes les données de l'utilisateur.
   useEffect(() => {
     const userInfo = async () => {
-      const data = await fetch(
-        `https://murmuring-caverns-89905.herokuapp.com/userDetail?token=${props.token}`
-      )
+      const data = await fetch(`/userDetail?token=${props.token}`)
       const body = await data.json()
       console.log('body', body)
       if (body.result) {
@@ -35,9 +33,7 @@ function Nav(props) {
     }
 
     const findArticlesWishList = async () => {
-      const dataWishlist = await fetch(
-        `https://murmuring-caverns-89905.herokuapp.com/wishlist-article?token=${props.token}`
-      )
+      const dataWishlist = await fetch(`/wishlist-article?token=${props.token}`)
       const body = await dataWishlist.json()
       console.log('body : ', body)
 

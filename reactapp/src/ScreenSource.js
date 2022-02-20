@@ -12,9 +12,7 @@ function ScreenSource(props) {
   useEffect(() => {
     // On récupère la langue en BDD à l'arrivée du user
     const findLang = async () => {
-      const reqFind = await fetch(
-        `https://murmuring-caverns-89905.herokuapp.com/user-lang?token=${props.token}`
-      )
+      const reqFind = await fetch(`/user-lang?token=${props.token}`)
       const result = await reqFind.json()
       console.log('result : ', result)
 
@@ -49,14 +47,11 @@ function ScreenSource(props) {
   // Dernière partie sur la gestion des langues, afin que la langue soit enregistrée en BDD.
   var changeLang = async (lang) => {
     // Update de la langue en BDD
-    const reqLang = await fetch(
-      'https://murmuring-caverns-89905.herokuapp.com/user-lang',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `langue=${lang}&token=${props.token}`,
-      }
-    )
+    const reqLang = await fetch('/user-lang', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `langue=${lang}&token=${props.token}`,
+    })
     // Update de la langue dans le composant
     setSelectedLang(lang)
   }

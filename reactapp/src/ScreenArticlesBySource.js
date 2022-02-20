@@ -26,9 +26,7 @@ function ScreenArticlesBySource(props) {
     }
 
     const userInfo = async () => {
-      const data = await fetch(
-        `https://murmuring-caverns-89905.herokuapp.com/userDetail?token=${props.token}`
-      )
+      const data = await fetch(`/userDetail?token=${props.token}`)
       const body = await data.json()
       console.log('body', body)
       if (body.result) {
@@ -64,16 +62,12 @@ function ScreenArticlesBySource(props) {
   var saveArticle = async (article) => {
     console.log('article dans saveArticle : ', article)
     props.addToWishList(article)
-    const saveReq = await fetch(
-      'https://murmuring-caverns-89905.herokuapp.com/wishlist-article',
-      {
-        method: 'POST',
-        mode: 'cors',
+    const saveReq = await fetch('/wishlist-article', {
+      method: 'POST',
 
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `name=${article.title}&content=${article.content}&desc=${article.description}&lang=${props.selectedLang}&img=${article.urlToImage}&token=${props.token}`,
-      }
-    )
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `name=${article.title}&content=${article.content}&desc=${article.description}&lang=${props.selectedLang}&img=${article.urlToImage}&token=${props.token}`,
+    })
   }
 
   return (

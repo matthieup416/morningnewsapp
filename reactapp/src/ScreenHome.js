@@ -40,17 +40,14 @@ function ScreenHome(props) {
   }
 
   var handleSubmitSignup = async () => {
-    const data = await fetch(
-      'https://murmuring-caverns-89905.herokuapp.com/sign-up',
-      {
-        method: 'POST',
+    const data = await fetch('/sign-up', {
+      method: 'POST',
 
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: `usernameFromFront=${signUpUsername}&emailFromFront=${signUpEmail}&passwordFromFront=${signUpPassword}`,
-      }
-    )
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `usernameFromFront=${signUpUsername}&emailFromFront=${signUpEmail}&passwordFromFront=${signUpPassword}`,
+    })
 
     const body = await data.json()
 
@@ -67,16 +64,13 @@ function ScreenHome(props) {
   }
 
   var handleSubmitSignin = async () => {
-    const data = await fetch(
-      'https://murmuring-caverns-89905.herokuapp.com/sign-in',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: `emailFromFront=${signInEmail}&passwordFromFront=${signInPassword}`,
-      }
-    )
+    const data = await fetch('/sign-in', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `emailFromFront=${signInEmail}&passwordFromFront=${signInPassword}`,
+    })
 
     const body = await data.json()
 

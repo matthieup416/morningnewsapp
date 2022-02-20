@@ -16,7 +16,7 @@ function ScreenMyArticles(props) {
   useEffect(() => {
     const findArticlesWishList = async () => {
       const dataWishlist = await fetch(
-        `https://murmuring-caverns-89905.herokuapp.com/wishlist-article?lang=${langFiltre}&token=${props.token}`
+        `/wishlist-article?lang=${langFiltre}&token=${props.token}`
       )
       const body = await dataWishlist.json()
       console.log('body.articles : ', body.articles)
